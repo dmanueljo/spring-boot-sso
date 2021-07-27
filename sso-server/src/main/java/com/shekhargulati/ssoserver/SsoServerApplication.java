@@ -1,5 +1,7 @@
 package com.shekhargulati.ssoserver;
 
+import java.lang.reflect.Field;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +16,15 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.util.ReflectionUtils;
 
+/**
+ * Utilitie for reflaction Uses
+ * 
+ * Field parentAuthMgrField = ReflectionUtils.findField(
+				AuthenticationManagerBuilder.class, "parentAuthenticationManager");
+
+ */
 @SpringBootApplication
 @EnableResourceServer
 public class SsoServerApplication {
@@ -73,5 +83,16 @@ public class SsoServerApplication {
         public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
             endpoints.authenticationManager(authenticationManager);
         }
+        
+        
+        /**
+         * TODO:Implements logout source code
+         */
+        
+        
     }
+    
+    
+    
+    
 }
